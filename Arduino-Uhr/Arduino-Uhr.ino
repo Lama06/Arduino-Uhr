@@ -23,6 +23,8 @@ E |   | C
 #define PIN_G 12
 
 void setup() {
+  Serial.begin(9600);
+  
   pinMode(DIGIT_1, OUTPUT);
   pinMode(DIGIT_2, OUTPUT);
   pinMode(DIGIT_3, OUTPUT);
@@ -38,105 +40,55 @@ void setup() {
 
 void digit1() {
   digitalWrite(DIGIT_1, HIGH);
-  digitalWrite(DIGIT_2, LOW);
-  digitalWrite(DIGIT_3, LOW);
-  digitalWrite(DIGIT_4, LOW);
-}
-
-void digit2() {
-  digitalWrite(DIGIT_1, LOW);
   digitalWrite(DIGIT_2, HIGH);
-  digitalWrite(DIGIT_3, LOW);
-  digitalWrite(DIGIT_4, LOW);
-}
-
-void digit3() {
-  digitalWrite(DIGIT_1, LOW);
-  digitalWrite(DIGIT_2, LOW);
   digitalWrite(DIGIT_3, HIGH);
   digitalWrite(DIGIT_4, LOW);
 }
 
-void digit4() {
-  digitalWrite(DIGIT_1, LOW);
-  digitalWrite(DIGIT_2, LOW);
+void digit2() {
+  digitalWrite(DIGIT_1, HIGH);
+  digitalWrite(DIGIT_2, HIGH);
   digitalWrite(DIGIT_3, LOW);
   digitalWrite(DIGIT_4, HIGH);
 }
 
+void digit3() {
+  digitalWrite(DIGIT_1, HIGH);
+  digitalWrite(DIGIT_2, LOW);
+  digitalWrite(DIGIT_3, HIGH);
+  digitalWrite(DIGIT_4, HIGH);
+}
+
+void digit4() {
+  digitalWrite(DIGIT_1, LOW);
+  digitalWrite(DIGIT_2, HIGH);
+  digitalWrite(DIGIT_3, HIGH);
+  digitalWrite(DIGIT_4, HIGH);
+}
+
 void display0() {
-  digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, LOW);
-  digitalWrite(PIN_C, LOW);
-  digitalWrite(PIN_D, LOW);
-  digitalWrite(PIN_E, LOW);
-  digitalWrite(PIN_F, LOW);
-  digitalWrite(PIN_G, HIGH);
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, HIGH);
+  digitalWrite(PIN_E, HIGH);
+  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_G, LOW);
 }
 
 void display1() {
-  digitalWrite(PIN_A, HIGH);
-  digitalWrite(PIN_B, HIGH);
-  digitalWrite(PIN_C, HIGH);
-  digitalWrite(PIN_D, HIGH);
-  digitalWrite(PIN_E, LOW);
-  digitalWrite(PIN_F, LOW);
-  digitalWrite(PIN_G, HIGH);
+  digitalWrite(PIN_A, LOW);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, LOW);
+  digitalWrite(PIN_D, LOW);
+  digitalWrite(PIN_E, HIGH);
+  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_G, LOW);
 }
 
 void display2() {
-  digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, LOW);
-  digitalWrite(PIN_C, HIGH);
-  digitalWrite(PIN_D, LOW);
-  digitalWrite(PIN_E, LOW);
-  digitalWrite(PIN_F, HIGH);
-  digitalWrite(PIN_G, LOW);
-}
-
-void display3() {
-  digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, LOW);
-  digitalWrite(PIN_C, LOW);
-  digitalWrite(PIN_D, LOW);
-  digitalWrite(PIN_E, HIGH);
-  digitalWrite(PIN_F, HIGH);
-  digitalWrite(PIN_G, LOW);
-}
-
-void display4() {
   digitalWrite(PIN_A, HIGH);
-  digitalWrite(PIN_B, LOW);
-  digitalWrite(PIN_C, LOW);
-  digitalWrite(PIN_D, HIGH);
-  digitalWrite(PIN_E, HIGH);
-  digitalWrite(PIN_F, LOW);
-  digitalWrite(PIN_G, LOW);
-}
-
-void display5() {
-  digitalWrite(PIN_A, LOW);
   digitalWrite(PIN_B, HIGH);
-  digitalWrite(PIN_C, LOW);
-  digitalWrite(PIN_D, LOW);
-  digitalWrite(PIN_E, HIGH);
-  digitalWrite(PIN_F, LOW);
-  digitalWrite(PIN_G, LOW);
-}
-
-void display6() {
-  digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, HIGH);
-  digitalWrite(PIN_C, LOW);
-  digitalWrite(PIN_D, LOW);
-  digitalWrite(PIN_E, LOW);
-  digitalWrite(PIN_F, LOW);
-  digitalWrite(PIN_G, LOW);
-}
-
-void display7() {
-  digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, LOW);
   digitalWrite(PIN_C, LOW);
   digitalWrite(PIN_D, HIGH);
   digitalWrite(PIN_E, HIGH);
@@ -144,24 +96,74 @@ void display7() {
   digitalWrite(PIN_G, HIGH);
 }
 
-void display8() {
-  digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, LOW);
-  digitalWrite(PIN_C, LOW);
-  digitalWrite(PIN_D, LOW);
+void display3() {
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, HIGH);
   digitalWrite(PIN_E, LOW);
   digitalWrite(PIN_F, LOW);
+  digitalWrite(PIN_G, HIGH);
+}
+
+void display4() {
+  digitalWrite(PIN_A, LOW);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, LOW);
+  digitalWrite(PIN_E, LOW);
+  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_G, HIGH);
+}
+
+void display5() {
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, HIGH);
+  digitalWrite(PIN_E, LOW);
+  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_G, HIGH);
+}
+
+void display6() {
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, HIGH);
+  digitalWrite(PIN_E, HIGH);
+  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_G, HIGH);
+}
+
+void display7() {
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, LOW);
+  digitalWrite(PIN_E, LOW);
+  digitalWrite(PIN_F, HIGH);
   digitalWrite(PIN_G, LOW);
 }
 
-void display9() {
-  digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, LOW);
-  digitalWrite(PIN_C, LOW);
-  digitalWrite(PIN_D, LOW);
+void display8() {
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, HIGH);
   digitalWrite(PIN_E, HIGH);
-  digitalWrite(PIN_F, LOW);
-  digitalWrite(PIN_G, LOW);
+  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_G, HIGH);
+}
+
+void display9() {
+  digitalWrite(PIN_A, HIGH);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
+  digitalWrite(PIN_D, HIGH);
+  digitalWrite(PIN_E, LOW);
+  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_G, HIGH);
 }
 
 void displayNumber(unsigned int number) {
@@ -213,17 +215,21 @@ void loop() {
 
   digit1();
   displayNumber(digit1Number);
+  Serial.print(digit1Number);
   delay(1);
 
   digit2();
   displayNumber(digit2Number);
+  Serial.print(digit2Number);
   delay(1);
 
   digit3();
   displayNumber(digit3Number);
+  Serial.print(digit3Number);
   delay(1);
 
   digit4();
   displayNumber(digit4Number);
+  Serial.println(digit4Number);
   delay(1);
 }
