@@ -21,6 +21,7 @@ E |   | C
 #define PIN_E 10
 #define PIN_F 11
 #define PIN_G 12
+#define PIN_PIPS 13
 
 void setup() {
   Serial.begin(9600);
@@ -66,6 +67,16 @@ void digit4() {
   digitalWrite(DIGIT_4, HIGH);
 }
 
+void displayNone() {
+  digitalWrite(PIN_A, LOW);
+  digitalWrite(PIN_B, LOW);
+  digitalWrite(PIN_C, LOW);
+  digitalWrite(PIN_D, LOW);
+  digitalWrite(PIN_E, LOW);
+  digitalWrite(PIN_F, LOW);
+  digitalWrite(PIN_G, LOW);
+}
+
 void display0() {
   digitalWrite(PIN_A, HIGH);
   digitalWrite(PIN_B, HIGH);
@@ -78,11 +89,11 @@ void display0() {
 
 void display1() {
   digitalWrite(PIN_A, LOW);
-  digitalWrite(PIN_B, LOW);
-  digitalWrite(PIN_C, LOW);
+  digitalWrite(PIN_B, HIGH);
+  digitalWrite(PIN_C, HIGH);
   digitalWrite(PIN_D, LOW);
-  digitalWrite(PIN_E, HIGH);
-  digitalWrite(PIN_F, HIGH);
+  digitalWrite(PIN_E, LOW);
+  digitalWrite(PIN_F, LOW);
   digitalWrite(PIN_G, LOW);
 }
 
@@ -201,12 +212,61 @@ void displayNumber(unsigned int number) {
    }
 }
 
+void ende() {
+  if ((millis() % 2000) > 1000) {
+    digit1();
+    display0();
+    delay(1);
+  
+    digit2();
+    display0();
+    delay(1);
+  
+    digit3();
+    display0();
+    delay(1);
+  
+    digit4();
+    display0();
+    delay(1);
+
+    tone(PIN_PIPS, 100);
+    return;
+  }
+
+  digit1();
+  displayNone();
+  delay(1);
+  
+  digit2();
+  displayNone();
+  delay(1);
+
+  digit3();
+  displayNone();
+  delay(1);
+
+  digit4();
+  displayNone();
+  delay(1);
+
+  noTone(PIN_PIPS);
+}
+
 void loop() {
   unsigned long millisSinceStart = millis();
   unsigned int secondsSinceStart = millisSinceStart/1000;
-
-  unsigned int minutesToDisplay = secondsSinceStart/60;
-  unsigned int secondsToDisplay = secondsSinceStart-(minutesToDisplay*60);
+  
+  int remainingSeconds = 90*60 - secondsSinceStart;
+  remainingSeconds -= (secondsSinceStart/(3*60+10))*10;
+  
+  if (remainingSeconds <= 0) {
+    ende();
+    return;
+  }
+  
+  unsigned int minutesToDisplay = remainingSeconds/60;
+  unsigned int secondsToDisplay = remainingSeconds-(minutesToDisplay*60);
 
   unsigned int digit1Number = (minutesToDisplay/10)%10;
   unsigned int digit2Number = minutesToDisplay%10;
